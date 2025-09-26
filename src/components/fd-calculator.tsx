@@ -106,142 +106,146 @@ export default function FdCalculator() {
   } satisfies ChartConfig;
 
   return (
-    <>
-      <Card className="w-full max-w-lg shadow-lg border-primary/20">
-        <CardHeader className="text-center">
-          <CardTitle className="text-3xl font-bold text-primary">FD Calculator</CardTitle>
-          <CardDescription>Estimate the returns on your Fixed Deposit</CardDescription>
-        </CardHeader>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
-            <CardContent className="space-y-4">
-              <FormField
-                control={form.control}
-                name="principal"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Principal Amount</FormLabel>
-                    <div className="relative">
-                      <Landmark className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                      <Input type="number" step="any" placeholder="e.g., 100000" className="pl-10" {...field} />
-                    </div>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="rate"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Annual Interest Rate (%)</FormLabel>
-                    <div className="relative">
-                      <Percent className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                      <Input type="number" step="0.01" placeholder="e.g., 6.5" className="pl-10" {...field} />
-                    </div>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="years"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Tenure (in years)</FormLabel>
-                    <div className="relative">
-                      <CalendarClock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                      <Input type="number" step="0.1" placeholder="e.g., 5" className="pl-10" {...field} />
-                    </div>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="compounding"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Compounding Frequency</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
-                      <FormControl>
-                        <div className="relative">
-                            <Repeat className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                            <SelectTrigger className="pl-10">
-                              <SelectValue placeholder="Select compounding frequency" />
-                            </SelectTrigger>
-                        </div>
-                      </FormControl>
-                      <SelectContent>
-                        <SelectItem value="annually">Annually</SelectItem>
-                        <SelectItem value="half-yearly">Half-Yearly</SelectItem>
-                        <SelectItem value="quarterly">Quarterly</SelectItem>
-                        <SelectItem value="monthly">Monthly</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </CardContent>
-            <CardFooter>
-              <Button type="submit" size="lg" className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
-                Calculate
-              </Button>
-            </CardFooter>
-          </form>
-        </Form>
-      </Card>
+    <div className="flex flex-col lg:flex-row lg:items-start lg:gap-8 w-full max-w-6xl">
+      <div className="w-full lg:w-1/2">
+        <Card className="w-full shadow-lg border-primary/20">
+          <CardHeader className="text-center">
+            <CardTitle className="text-3xl font-bold text-primary">FD Calculator</CardTitle>
+            <CardDescription>Estimate the returns on your Fixed Deposit</CardDescription>
+          </CardHeader>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)}>
+              <CardContent className="space-y-4">
+                <FormField
+                  control={form.control}
+                  name="principal"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Principal Amount</FormLabel>
+                      <div className="relative">
+                        <Landmark className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                        <Input type="number" step="any" placeholder="e.g., 100000" className="pl-10" {...field} />
+                      </div>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="rate"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Annual Interest Rate (%)</FormLabel>
+                      <div className="relative">
+                        <Percent className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                        <Input type="number" step="0.01" placeholder="e.g., 6.5" className="pl-10" {...field} />
+                      </div>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="years"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Tenure (in years)</FormLabel>
+                      <div className="relative">
+                        <CalendarClock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                        <Input type="number" step="0.1" placeholder="e.g., 5" className="pl-10" {...field} />
+                      </div>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="compounding"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Compounding Frequency</FormLabel>
+                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <FormControl>
+                          <div className="relative">
+                              <Repeat className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                              <SelectTrigger className="pl-10">
+                                <SelectValue placeholder="Select compounding frequency" />
+                              </SelectTrigger>
+                          </div>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="annually">Annually</SelectItem>
+                          <SelectItem value="half-yearly">Half-Yearly</SelectItem>
+                          <SelectItem value="quarterly">Quarterly</SelectItem>
+                          <SelectItem value="monthly">Monthly</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </CardContent>
+              <CardFooter>
+                <Button type="submit" size="lg" className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
+                  Calculate
+                </Button>
+              </CardFooter>
+            </form>
+          </Form>
+        </Card>
+      </div>
       
-      {results && (
-        <div className="w-full max-w-lg mt-8 animate-in fade-in-0 zoom-in-95 duration-500">
-            <Card className="shadow-lg border-primary/20">
-                <CardHeader>
-                    <CardTitle className="text-center text-2xl font-bold text-primary">Results</CardTitle>
-                </CardHeader>
-                <CardContent className="grid grid-cols-1 md:grid-cols-5 gap-6 items-center">
-                    <div className="md:col-span-3 space-y-3">
-                        <div className="flex justify-between items-baseline p-3 bg-secondary rounded-lg">
-                            <span className="text-sm text-muted-foreground">Invested Amount</span>
-                            <span className="font-semibold text-base">{formatCurrency(results.principal)}</span>
-                        </div>
-                         <div className="flex justify-between items-baseline p-3 bg-secondary rounded-lg">
-                            <span className="text-sm text-muted-foreground">Total Interest</span>
-                            <span className="font-semibold text-base text-accent">{formatCurrency(results.totalInterest)}</span>
-                        </div>
-                         <div className="flex justify-between items-baseline p-4 bg-primary/10 rounded-lg border border-primary/20">
-                            <span className="text-sm text-primary font-medium">Maturity Value</span>
-                            <span className="font-bold text-lg text-primary">{formatCurrency(results.maturityValue)}</span>
-                        </div>
-                    </div>
-                    <div className="md:col-span-2">
-                        <ChartContainer config={chartConfig} className="mx-auto aspect-square h-[180px]">
-                            <PieChart>
-                                <ChartTooltip
-                                    cursor={false}
-                                    content={<ChartTooltipContent indicator="dot" hideLabel />}
-                                />
-                                <Pie
-                                    data={[
-                                        { name: "principal", value: results.principal },
-                                        { name: "interest", value: results.totalInterest }
-                                    ]}
-                                    dataKey="value"
-                                    nameKey="name"
-                                    innerRadius={50}
-                                    strokeWidth={2}
-                                />
-                                <ChartLegend
-                                    content={<ChartLegendContent nameKey="name" />}
-                                    className="-mt-4"
-                                />
-                            </PieChart>
-                        </ChartContainer>
-                    </div>
-                </CardContent>
-            </Card>
-        </div>
-      )}
-    </>
+      <div className="w-full lg:w-1/2 mt-8 lg:mt-0">
+        {results && (
+          <div className="w-full animate-in fade-in-0 zoom-in-95 duration-500">
+              <Card className="shadow-lg border-primary/20">
+                  <CardHeader>
+                      <CardTitle className="text-center text-2xl font-bold text-primary">Results</CardTitle>
+                  </CardHeader>
+                  <CardContent className="grid grid-cols-1 md:grid-cols-5 gap-6 items-center">
+                      <div className="md:col-span-3 space-y-3">
+                          <div className="flex justify-between items-baseline p-3 bg-secondary rounded-lg">
+                              <span className="text-sm text-muted-foreground">Invested Amount</span>
+                              <span className="font-semibold text-base">{formatCurrency(results.principal)}</span>
+                          </div>
+                           <div className="flex justify-between items-baseline p-3 bg-secondary rounded-lg">
+                              <span className="text-sm text-muted-foreground">Total Interest</span>
+                              <span className="font-semibold text-base text-accent">{formatCurrency(results.totalInterest)}</span>
+                          </div>
+                           <div className="flex justify-between items-baseline p-4 bg-primary/10 rounded-lg border border-primary/20">
+                              <span className="text-sm text-primary font-medium">Maturity Value</span>
+                              <span className="font-bold text-lg text-primary">{formatCurrency(results.maturityValue)}</span>
+                          </div>
+                      </div>
+                      <div className="md:col-span-2">
+                          <ChartContainer config={chartConfig} className="mx-auto aspect-square h-[180px]">
+                              <PieChart>
+                                  <ChartTooltip
+                                      cursor={false}
+                                      content={<ChartTooltipContent indicator="dot" hideLabel />}
+                                  />
+                                  <Pie
+                                      data={[
+                                          { name: "principal", value: results.principal },
+                                          { name: "interest", value: results.totalInterest }
+                                      ]}
+                                      dataKey="value"
+                                      nameKey="name"
+                                      innerRadius={50}
+                                      strokeWidth={2}
+                                  />
+                                  <ChartLegend
+                                      content={<ChartLegendContent nameKey="name" />}
+                                      className="-mt-4"
+                                  />
+                              </PieChart>
+                          </ChartContainer>
+                      </div>
+                  </CardContent>
+              </Card>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }
